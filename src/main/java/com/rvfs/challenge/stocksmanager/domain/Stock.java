@@ -29,6 +29,18 @@ public class Stock {
 	private BigDecimal currentPrice;
 	private Calendar lastUpdate;
 
+	public Stock() {
+		super();
+	}
+
+	public Stock(Integer id, String name, BigDecimal currentPrice, Calendar lastUpdate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.currentPrice = currentPrice;
+		this.lastUpdate = lastUpdate;
+	}
+
 	/**
 	 * @return the id
 	 */
