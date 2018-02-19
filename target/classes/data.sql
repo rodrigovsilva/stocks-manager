@@ -1,0 +1,3 @@
+insert into stock (ID, NAME, CURRENT_PRICE, LAST_UPDATE) values (1, 'APPL', 100.50, CURRENT_TIMESTAMP());
+insert into stock (ID, NAME, CURRENT_PRICE, LAST_UPDATE) values (2, 'GOOGL', 201.30, CURRENT_TIMESTAMP());
+insert into stock (ID, NAME, CURRENT_PRICE, LAST_UPDATE)  values (3, 'FB', 90.40, CURRENT_TIMESTAMP());
