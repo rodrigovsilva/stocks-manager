@@ -1,5 +1,6 @@
 package com.rvfs.challenge.stocksmanager.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,13 @@ public class StockServiceImpl implements StockService {
 
 	@Override
 	public Stock create(Stock stock) {
+		stock.setLastUpdate(Calendar.getInstance());
 		return repository.save(stock);
 	}
 
 	@Override
 	public Stock update(Stock stock) {
+		stock.setLastUpdate(Calendar.getInstance());
 		return repository.save(stock);
 	}
 
