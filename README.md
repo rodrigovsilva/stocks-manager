@@ -54,10 +54,10 @@ Method: DELETE
 
 To access h2 console, open the url http://localhost:8080/h2-console/
 
-Driver Class: org.h2.Driver
-JDBC Url: jdbc:h2:mem:testdb
-User Name: sa
-You don't need password to access this database. Let the field empty.
+Driver Class: org.h2.Driver  
+JDBC Url: jdbc:h2:mem:testdb  
+User Name: sa  
+You don't need password to access this database. Let the field empty.  
 
 
 ### Contact
