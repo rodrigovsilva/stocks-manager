@@ -20,34 +20,34 @@ Open in your browser (http://localhost:8080) to see the Stocks Prices list.
 
 If you want to access the API resources, use the mapping listed below.
 
-- Get All Stocks
-URL: http://localhost:8080/api/stocks
-Method: GET
+- Get All Stocks  
+URL: http://localhost:8080/api/stocks  
+Method: GET  
 
-- Find a Stock by id
-URL: http://localhost:8080/api/stocks/{id}
-Method: GET
+- Find a Stock by id  
+URL: http://localhost:8080/api/stocks/{id}  
+Method: GET  
 
-- Create Stock
-URL: http://localhost:8080/api/stocks
-Method: POST
+- Create Stock  
+URL: http://localhost:8080/api/stocks  
+Method: POST  
 Body: ```
 {
 	"name":"CSCO",
 	"currentPrice": 50.50
 }```
 
-- Update Stock Price by Id
-URL: http://localhost:8080/api/stocks/{id}
-Method: PUT
+- Update Stock Price by Id  
+URL: http://localhost:8080/api/stocks/{id}  
+Method: PUT  
 Body: ```
 {
 	"currentPrice": 40.54
 }```
 
-- Delete Stock by Id
-URL: http://localhost:8080/api/stocks/{id}
-Method: DELETE
+- Delete Stock by Id  
+URL: http://localhost:8080/api/stocks/{id}  
+Method: DELETE  
 
 
 ### H2 Database Console
