@@ -80,9 +80,9 @@ public class StockRestController {
 		if (currentStock == null)
 			return ResponseEntity.notFound().build();
 
-		stock.setId(id);
+		currentStock.setCurrentPrice(stock.getCurrentPrice());
 
-		stockService.update(stock);
+		stockService.update(currentStock);
 
 		return ResponseEntity.ok().build();
 	}
