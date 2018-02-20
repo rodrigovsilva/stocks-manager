@@ -33,13 +33,8 @@ public class StockRestController {
 	@Autowired
 	private StockService stockService;
 
-	@RequestMapping()
-	public List<Stock> getAll() {
-		return stockService.getAll();
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<List<Stock>> listAllUsers() {
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ResponseEntity<List<Stock>> getAll() {
 		List<Stock> stocks = stockService.getAll();
 		if (stocks.isEmpty()) {
 			return new ResponseEntity<List<Stock>>(HttpStatus.NO_CONTENT);
@@ -48,7 +43,7 @@ public class StockRestController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Stock> getUser(@PathVariable("id") Integer id) {
+	public ResponseEntity<Stock> get(@PathVariable("id") Integer id) {
 		Stock stock = stockService.findById(id);
 		if (stock == null) {
 			return new ResponseEntity<Stock>(HttpStatus.NOT_FOUND);
@@ -57,13 +52,18 @@ public class StockRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> create(@RequestBody Stock stock) {
-		Stock savedStock = stockService.create(stock);
+	public ResponseEntity<Stock> create(@RequestBody Stock stock) {
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedStock.getId())
-				.toUri();
+		if (stock == null) {
+			return new ResponseEntity<Stock>(stock, HttpStatus.BAD_REQUEST);
+		} else {
+			Stock savedStock = stockService.create(stock);
 
-		return ResponseEntity.created(location).build();
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(savedStock.getId()).toUri();
+
+			return ResponseEntity.created(location).build();
+		}
 
 	}
 
@@ -75,15 +75,15 @@ public class StockRestController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> update(@RequestBody Stock stock, @PathVariable Integer id) {
 
-		Stock studentOptional = stockService.findById(id);
+		Stock currentStock = stockService.findById(id);
 
-		if (studentOptional == null)
+		if (currentStock == null)
 			return ResponseEntity.notFound().build();
 
 		stock.setId(id);
 
 		stockService.update(stock);
 
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().build();
 	}
 }

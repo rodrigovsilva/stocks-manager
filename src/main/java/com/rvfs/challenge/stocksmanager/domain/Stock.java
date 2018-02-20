@@ -11,6 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.rvfs.challenge.stocksmanager.util.CalendarSerializer;
+
 /**
  * 
  * Stocks model.
@@ -27,6 +33,8 @@ public class Stock {
 	private Integer id;
 	private String name;
 	private BigDecimal currentPrice;
+
+	@DateTimeFormat(iso = ISO.DATE)
 	private Calendar lastUpdate;
 
 	public Stock() {
@@ -89,6 +97,7 @@ public class Stock {
 	/**
 	 * @return the lastUpdate
 	 */
+	@JsonSerialize(using = CalendarSerializer.class)
 	public Calendar getLastUpdate() {
 		return lastUpdate;
 	}
